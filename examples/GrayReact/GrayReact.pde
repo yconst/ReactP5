@@ -19,7 +19,7 @@ void setup() {
   frameRate(17);
   sphereDetail(5);
   initpanel();
-  background(0);
+  background(241);
   cam = new PeasyCam(this, 0,0,0,1550);
   font = createFont("Arial",12);
   reset();
@@ -29,7 +29,7 @@ void setup() {
 }
  
 void draw() {
-  background(0);
+  background(241);
   if (loop) {
     step();
     computeVolume();
@@ -75,4 +75,21 @@ public void reset() {
   volume=new VolumetricSpaceArray(SCALE,w,h,d);
   surface=new ArrayIsoSurface(volume);
   computeVolume();
+}
+
+//Recompute parameter arrays using base values
+public void recomp() {
+  float[][] substances = new float[2][w*h*d];
+  float[][] parameters = new float[2][w*h*d];
+  for (int i=0;i<w;i++) {
+    for (int j=0;j<h;j++) {
+      for (int k=0;k<d;k++) {
+        int pos = i + j*w + k*w*h;
+        parameters[0][pos] = FVal;
+        parameters[1][pos] = kVal;
+      }
+    }
+  }
+  prd.setS(substances);
+  prd.setReactionParameters(parameters);
 }

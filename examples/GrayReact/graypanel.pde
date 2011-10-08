@@ -23,10 +23,10 @@ void initpanel() {
   i.addLabel("b3", "Starting Pattern");
   i.addButton("spot", "Single Spot");
   i.addButton("spots"," Spot Grid");
-  i.addButton("cyl", "Single Cyl");
-  i.addButton("cyls", "Cyl Grid");
   i.addButton("xcyl", "Single X Cyl");
-  i.addButton("xcyls", "X Cyl Grid");
+  i.addButton("ycyl", "Single Y Cyl");
+  i.addButton("zcyl", "Single Z Cyl");
+  i.addButton("cyls", "Cyl Grid");
   
   i.addLabel("b2","Display");
   i.addButton("computeVolume", "Recompute Mesh");
