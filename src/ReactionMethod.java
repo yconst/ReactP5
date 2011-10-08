@@ -32,9 +32,13 @@ public class ReactionMethod extends Solver {
     
     protected ReactP5 base;
     
-    // Constructor.
+    // Constructors.
     public ReactionMethod(ReactP5 nbase) {
         base = nbase;
+    }
+    
+    public ReactionMethod() {
+        
     }
     
     protected void setBase(ReactP5 newBase) {

@@ -32,9 +32,13 @@ public class DiffusionMethod extends Solver {
 
     protected int[][] N;        // Neighbors references for diffusion algorithm acceleration
     
-    // Constructor.
+    // Constructors.
     public DiffusionMethod(ReactP5 nbase) {
         base = nbase;
+    }
+    
+    public DiffusionMethod() {
+        
     }
     
     protected void setBase(ReactP5 newBase) {
