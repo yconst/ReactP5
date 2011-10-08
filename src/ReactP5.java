@@ -31,6 +31,8 @@ public class ReactP5 {
     
     protected int w,h,d;                   // Dimensions
     
+    protected int I, Ir, Id;               // Iterations: General, Reaction, Diffusion
+    
     protected float[][] S;                 // Substances
     protected float[][] Sn;                // Next Substances
     
@@ -53,6 +55,7 @@ public class ReactP5 {
         Sn = R.createSubstancesArray();
         P = R.createParametersArray();
         dRS = D.createDiffusionArray();
+        I = Ir = Id = 0;
     }
     
     //
@@ -63,6 +66,9 @@ public class ReactP5 {
     public void step() {
         D.step();
         R.step();
+        I++;
+        Ir++;
+        Id++;
     }
     
     // Performs multiple steps of Reaction & Diffusion
@@ -72,16 +78,21 @@ public class ReactP5 {
             D.step();
             R.step();
         }
+        I+=steps;
+        Ir+=steps;
+        Id+=steps;
     }
     
     // Only steps reaction method once.
     public void stepR() {
         R.step();
+        Ir++;
     }
     
     // Only steps diffusion method once.
     public void stepD() {
         D.step();
+        Id++;
     }
     
     //
@@ -101,6 +112,22 @@ public class ReactP5 {
     // Gets Depth of simulation.
     public int getD() {
         return d;
+    }
+    
+    //
+    // Iterations
+    // ___________________________________________________
+    
+    public int getIteration() {
+        return I;
+    }
+    
+    public int getReactionIteration() {
+        return Ir;
+    }
+    
+    public int getDiffusionIteration() {
+        return Id;
     }
     
     //
