@@ -1,0 +1,3 @@
+ -Xms64m -Xmx1024m
+GrayReact
+GrayReact.jar,core.jar,ReactP5.jar,PeasyCam.jar,gluegen-rt.jar,jogl.jar,opengl.jar,toxiclibscore.jar,volumeutils.jar,Panel4P.jar

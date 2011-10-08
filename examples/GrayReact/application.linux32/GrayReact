@@ -1,0 +1,4 @@
+#!/bin/sh
+
+APPDIR=$(dirname "$0")
+java  -Djava.library.path="$APPDIR" -cp "$APPDIR/lib/GrayReact.jar:$APPDIR/lib/core.jar:$APPDIR/lib/ReactP5.jar:$APPDIR/lib/PeasyCam.jar:$APPDIR/lib/gluegen-rt.jar:$APPDIR/lib/jogl.jar:$APPDIR/lib/opengl.jar:$APPDIR/lib/toxiclibscore.jar:$APPDIR/lib/volumeutils.jar:$APPDIR/lib/Panel4P.jar" GrayReact
