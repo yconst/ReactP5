@@ -20,29 +20,36 @@ Please note that the library is responsible for the simulation of the Reaction/D
 ## Using ReactP5
     
 Import:
+
     import volatileprototypes.ReactP5.*;
     
 Create a new ReactP5 simulation. A Gray-Scott Reaction/Diffusion simulation
 is created by default:
+
     ReactP5 rp5 = new ReactP5(width_dimension, height_dimension, depth_dimension);
     
 Set simulation parameters:
+
     rp5.setReactionParameter(0, 0.2);
     rp5.setReactionParameter(1, 0.5);
     rp5.setDiffusionParameter(0, 0.3);
     
 Create a few random shapes:
+
     ReactP5Generate.randomSphere(rp5);
     ReactP5Generate.randomCylinder(rp5);
     
 Step the simulation:
+
     rp5.step();
     rp5.step(20);
     
 Reset the simulation:
+
     rp5.reset();    
     
 Choose a Reaction and Diffusion method:
+
     rp5.SetReactionMethod(new FNReactionMethod());
     rp5.SetDiffusionMethod(new BasicDiffusionMethod());
     
