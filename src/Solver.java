@@ -62,13 +62,6 @@ public class Solver {
     } catch (InterruptedException ignore) {}
   }
   
-  // Same but steps all instances of this class by one iteration.
-  //public final void stepAll() {
-  //  try {
-  //      xs.invokeAll(cr);
-  //  } catch (InterruptedException ignore) {}
-  //}
-  
   protected void stepFunction(int step, int offset) {
   }
   

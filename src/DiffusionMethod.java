@@ -28,13 +28,17 @@ package volatileprototypes.ReactP5;
 
 public class DiffusionMethod extends Solver {
     
-    ReactP5 base;
+    protected ReactP5 base;
 
     protected int[][] N;        // Neighbors references for diffusion algorithm acceleration
     
     // Constructor.
     public DiffusionMethod(ReactP5 nbase) {
         base = nbase;
+    }
+    
+    protected void setBase(ReactP5 newBase) {
+        base = newBase;
     }
     
     // Swaps current matrix with next. Just a shortcut for convenience.
@@ -45,7 +49,7 @@ public class DiffusionMethod extends Solver {
     }
     
     // Creates a uniform diffusion array with default values.
-    protected float[][] createDefaultDiffusionArray() {
+    protected float[][] createDiffusionArray() {
         float[][] R = new float[base.S.length][base.w*base.h*base.d];
         for (int i=0;i<R[0].length;i++) {
             for (int j=0;j<R.length;j++) {
@@ -56,11 +60,27 @@ public class DiffusionMethod extends Solver {
     }
     
     // Creates a uniform diffusion array with user-defined values.
-    protected float[][] createDefaultDiffusionArray(float[] nd) {
+    protected float[][] createDiffusionArray(float[] nd) {
         float[][] R = new float[base.S.length][base.w*base.h*base.d];
         for (int i=0;i<R[0].length;i++) {
             for (int j=0;j<R.length;j++) {
                 R[j][i] = nd[j];
+            }
+        }
+        return R;
+    }
+    
+    // Creates a diffusion parameter array by modifying a diffusion
+    // parameter of an existing array.  
+    protected float[][] createDiffusionArray(float[][] diffusionArray, int index, float value) {
+        float[][] R = new float[diffusionArray.length][base.w*base.h*base.d];
+        for (int i=0;i<R[0].length;i++) {
+            for (int j=0;j<R.length;j++) {
+                if (j == index) {
+                    R[j][i] = value;
+                } else {
+                    R[j][i] = diffusionArray[j][i];
+                }
             }
         }
         return R;

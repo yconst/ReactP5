@@ -30,20 +30,56 @@ package volatileprototypes.ReactP5;
 
 public class ReactionMethod extends Solver {
     
-    ReactP5 base;
+    protected ReactP5 base;
     
     // Constructor.
     public ReactionMethod(ReactP5 nbase) {
         base = nbase;
     }
     
-    // Creates a substance array with default values.
-    protected float[][] createDefaultSubstancesArray() {
+    protected void setBase(ReactP5 newBase) {
+        base = newBase;
+    }
+    
+    // Creates a substance array with default values (0).
+    protected float[][] createSubstancesArray() {
         return new float[1][base.w*base.h*base.d];
     }
     
     // Creates a substance array with user-defined values.
-    protected float[][] createDefaultSubstancesArray(float[] npar) {
+    protected float[][] createSubstancesArray(float[] npar) {
+        float[][] R = new float[npar.length][base.w*base.h*base.d];
+        for (int i=0;i<R[0].length;i++) {
+            for (int j=0;j<R.length;j++) {
+                R[j][i] = npar[j];
+            }
+        }
+        return R;
+    }
+  
+    // Creates a substances array by modifying a substance
+    // concentration of an existing array.  
+    protected float[][] createSubstancesArray(float[][] substancesArray, int index, float value) {
+        float[][] R = new float[substancesArray.length][base.w*base.h*base.d];
+        for (int i=0;i<R[0].length;i++) {
+            for (int j=0;j<R.length;j++) {
+                if (j == index) {
+                    R[j][i] = value;
+                } else {
+                    R[j][i] = substancesArray[j][i];
+                }
+            }
+        }
+        return R;
+    }
+    
+    // Creates a parameters array with default values (0).
+    protected float[][] createParametersArray() {
+        return new float[1][base.w*base.h*base.d];
+    }
+    
+    // Creates a parameters array with user-defined values.
+    protected float[][] createParametersArray(float[] npar) {
         float[][] R = new float[npar.length][base.w*base.h*base.d];
         for (int i=0;i<R[0].length;i++) {
             for (int j=0;j<R.length;j++) {
@@ -53,17 +89,17 @@ public class ReactionMethod extends Solver {
         return R;
     }
     
-    // Creates a parameters array with default values.
-    protected float[][] createDefaultParametersArray() {
-        return new float[1][base.w*base.h*base.d];
-    }
-    
-    // Creates a parameters array with user-defined values.
-    protected float[][] createDefaultParametersArray(float[] npar) {
-        float[][] R = new float[npar.length][base.w*base.h*base.d];
+    // Creates a parameters array by modifying a parameter
+    // of an existing array.
+    protected float[][] createParametersArray(float[][] parametersArray, int index, float value) {
+        float[][] R = new float[parametersArray.length][base.w*base.h*base.d];
         for (int i=0;i<R[0].length;i++) {
             for (int j=0;j<R.length;j++) {
-                R[j][i] = npar[j];
+                if (j == index) {
+                    R[j][i] = value;
+                } else {
+                    R[j][i] = parametersArray[j][i];
+                }
             }
         }
         return R;

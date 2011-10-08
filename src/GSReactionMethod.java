@@ -60,17 +60,17 @@ public class GSReactionMethod extends ReactionMethod {
     }
     
     @Override
-    protected float[][] createDefaultSubstancesArray() {
+    protected float[][] createSubstancesArray() {
         float[][] R = new float[2][base.w*base.h*base.d];
         for (int i=0;i<R[0].length;i++) {
-            R[0][i] = 1.0f;
+            R[0][i] = 0.4f;
             R[1][i] = 0.0f;
         }
         return R;
     }
     
     @Override
-    protected float[][] createDefaultParametersArray() {
+    protected float[][] createParametersArray() {
         float[][] R = new float[2][base.w*base.h*base.d];
         for (int i=0;i<R[0].length;i++) {
             R[0][i] = 0.051f; //F

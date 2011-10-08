@@ -49,28 +49,37 @@ public class ReactP5 {
     
     // Resets by replacing all Arrays with new ones.
     public void reset() {
-        S = R.createDefaultSubstancesArray();
-        Sn = R.createDefaultSubstancesArray();
-        P = R.createDefaultParametersArray();
-        dRS = D.createDefaultDiffusionArray();
+        S = R.createSubstancesArray();
+        Sn = R.createSubstancesArray();
+        P = R.createParametersArray();
+        dRS = D.createDiffusionArray();
     }
     
     //
     // Step Functions
     // ___________________________________________________
     
-    // Steps both Reaction & Diffusion methods.
+    // Steps both Reaction & Diffusion methods once.
     public void step() {
         D.step();
         R.step();
     }
     
-    // Only steps reaction method.
+    // Performs multiple steps of Reaction & Diffusion
+    // consequently.
+    public void step(int steps) {
+        for (int i = 0; i < steps; i++) {
+            D.step();
+            R.step();
+        }
+    }
+    
+    // Only steps reaction method once.
     public void stepR() {
         R.step();
     }
     
-    // Only steps diffusion method.
+    // Only steps diffusion method once.
     public void stepD() {
         D.step();
     }
@@ -99,12 +108,12 @@ public class ReactP5 {
     // ___________________________________________________
     
     // Return the array holding substance concentrations.
-    public float[][] getS() {
+    public float[][] getSubstances() {
         return S;
     }
     
     // Sets a new substance concentration array.
-    public void setS(float[][] nS) {
+    public void setSubstances(float[][] nS) {
         S = nS;
         Sn = new float[S.length][S[0].length];
     }
@@ -114,29 +123,45 @@ public class ReactP5 {
     // ___________________________________________________
     
     // Creates a uniform field of the given reaction parameters.
-    // [parameter index]
-    public void setReactionParameters(float[] nparm) {
-        P = R.createDefaultParametersArray(nparm);
+    // index, value
+    public void setReactionParameter(int index, float value) {
+        P = R.createParametersArray(P, index, value);
     }
     
-    // Creates a user-defined field of reaction parameters.
-    // [parameter index][position]
+    // Creates a uniform field of the given reaction parameters.
+    // [parameter index] value
+    public void setReactionParameters(float[] nparm) {
+        P = R.createParametersArray(nparm);
+    }
+    
+    // Replaces the current reaction parameter array with a
+    // user-defined field of reaction parameters.
+    // [parameter index][position] value.
     public void setReactionParameters(float[][] nparam) {
         P = nparam;
     }
     
     // Returns the reaction parameters.
-    // [parameter index][position]
+    // [parameter index][position] value
     public float[][] getReactionParameters() {
         return P;
     }
     
-    // Creates a uniform field of the given diffusion parameters.
-    // [parameter index]
-    public void setDiffusionParameters(float[] nparm) {
-        dRS = D.createDefaultDiffusionArray(nparm);
+    // Creates a uniform field of reaction parameters.
+    // index, value
+    public void setDiffusionParameter(int index, float value) {
+        dRS = D.createDiffusionArray(dRS, index, value);
     }
     
+    // Creates a uniform field of diffusion parameters.
+    // [parameter index] value
+    public void setDiffusionParameters(float[] nparm) {
+        dRS = D.createDiffusionArray(nparm);
+    }
+    
+    // Replaces the current diffusion parameter array with a
+    // user-defined field of diffusion parameters.
+    // [parameter index][position] value.
     public void setDiffusionParameters(float[][] nparam) {
         dRS = nparam;
     }
@@ -153,21 +178,15 @@ public class ReactP5 {
     // Diffusion & Reaction Methods
     // ___________________________________________________
     
-    // 
     public void setDiffusionMethod(DiffusionMethod nd) {
+        nd.setBase(this);
         D = nd;
-    }
-    
-    public void setDiffusionMethod(String nd) {
-        
-    }
-    
-    public void setReactionMethod(ReactionMethod nr) {
-        R = nr;
         reset();
     }
     
-    public void setReactionMethod(String nr) {
-        
+    public void setReactionMethod(ReactionMethod nr) {
+        nr.setBase(this);
+        R = nr;
+        reset();
     }
 }

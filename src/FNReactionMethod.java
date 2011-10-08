@@ -60,7 +60,7 @@ public class FNReactionMethod extends ReactionMethod {
     }
     
     @Override
-    protected float[][] createDefaultSubstancesArray() {
+    protected float[][] createSubstancesArray() {
         float[][] R = new float[2][base.w*base.h*base.d];
         for (int i=0;i<R[0].length;i++) {
             R[0][i] = 1;
@@ -70,7 +70,7 @@ public class FNReactionMethod extends ReactionMethod {
     }
     
     @Override
-    protected float[][] createDefaultParametersArray() {
+    protected float[][] createParametersArray() {
         float[][] R = new float[2][base.w*base.h*base.d];
         for (int i=0;i<R[0].length;i++) {
             R[0][i] = 0.021f;
