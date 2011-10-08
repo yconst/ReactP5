@@ -1,6 +1,6 @@
 ReactP5
 
-Multi-threaded Reaction-Diffusion Solver for Processing.
+Multi-threaded Reaction-Diffusion Library for Processing.
 
 Copyright (c) 2011, Volatile Prototypes / Ioannis (Yiannis) Chatzikonstantinou,
 All rights reserved.
