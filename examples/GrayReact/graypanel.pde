@@ -2,7 +2,7 @@ import volatileprototypes.Panel4P.*;
 
 Panel4P i;
 
-public boolean loop, diffu, react, cap;
+public boolean loop, cap;
 public int cw, ch, cd, w, h, d, displaymode, cursormode, drawlayer;
 
 public float amp, atk, fof, FVal, kVal;
@@ -36,8 +36,6 @@ void initpanel() {
   i.addButton("cap", "Cap",1);
   
   i.addLabel("b1", "Advanced Process Parameters");
-  i.addButton("react", "Reaction", 1);
-  i.addButton("diffu", "Diffusion", 1);
   i.addSlider("FVal", "Base F Value", 0, 0.1, 0.051);
   i.addSlider("kVal", "Base k Value", 0, 0.1, 0.063);
   i.addSlider("DR1Val", "Base Diffusion Rate 1", 0, 0.4, 0.16);

@@ -21,7 +21,7 @@ public float volMult;
 
 public void computeVolume() {
   float[] volumeData = volume.getData();
-  float[] origData = prd.getS()[0];
+  float[] origData = prd.getSubstances()[0];
   for (int i=0;i<volumeData.length;i++) {
     volumeData[i] = volBase + volMult*origData[i];
   }
