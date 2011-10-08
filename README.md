@@ -3,9 +3,9 @@
 
 ## Introduction
 
-ReactionÐdiffusion systems are mathematical models which explain how the concentration of one or more substances distributed in space changes under the influence of two processes: local chemical reactions in which the substances are transformed into each other, and diffusion which causes the substances to spread out over a surface in space.
+Reactionâ€“diffusion systems are mathematical models which explain how the concentration of one or more substances distributed in space changes under the influence of two processes: local chemical reactions in which the substances are transformed into each other, and diffusion which causes the substances to spread out over a surface in space.
 
-This description implies that reactionÐdiffusion systems are naturally applied in chemistry. However, the system can also describe dynamical processes of non-chemical nature. Examples are found in biology, geology and physics and ecology. A traditionally common application of such processes is the modeling of naturally occurring textures, such as animal hide patterns.
+This description implies that reactionâ€“diffusion systems are naturally applied in chemistry. However, the system can also describe dynamical processes of non-chemical nature. Examples are found in biology, geology and physics and ecology. A traditionally common application of such processes is the modeling of naturally occurring textures, such as animal hide patterns.
 
 Reaction-diffusion systems rely on the discretization of a portion of space within which the reaction and diffusion algorithms are repeatedly applied to model the behavior of the system over time.
 
