@@ -60,9 +60,9 @@ ReactP5
 
 Multi-threaded Reaction-Diffusion Library for Processing.
 
-Copyright (c) 2011, Volatile Prototypes / Ioannis (Yiannis) Chatzikonstantinou,
+Copyright (c) 2011, 2014, Ioannis (Yiannis) Chatzikonstantinou,
 All rights reserved.
-http://volatileprototypes.com
+
 http://yconst.com
  
  Redistribution and use in source and binary forms, with or without modification, 
